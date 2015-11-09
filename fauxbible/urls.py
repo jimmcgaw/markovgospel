@@ -18,6 +18,7 @@ from django.contrib import admin
 from godbrain import views
 
 urlpatterns = [
+    url(r'^get_random_quote/$', views.get_random_quote, name='get_random_quote'),
     url(r'^', views.lets_get_holy, name='lets_get_holy'),
-    url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/', include(admin.site.urls)),
 ]

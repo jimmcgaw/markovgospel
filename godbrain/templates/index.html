@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Demo</title>
+    <title>The Markov Gospel</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <meta name="description" content="Demo project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
     <style type="text/css"></style>
   </head>
   <body>
-    <p>{{ crap_quote }}</p>
+    <div class="wrapper" style="width:900px;margin:0 auto;">
+    <header style="margin-bottom:15px;">
+      <h1>The Markov Gospel</h1>
+      <span><em>Statistically derived gospels from the texts of Matthew, Mark, Luke, and John</em></span>
+    </header>
+    <content>
+
+
+      <p class="jumbotron" id="quote" style="font-family: 'Shadows Into Light Two', cursive; border-radius: 5px;">{{ crap_quote }}</p>
+
+      <button id="generate" class="btn btn-large btn-primary" style="float:right;">Generate</button>
+      <span style="float:right;clear:both" class='help-text'>(or press any key)</span>
+    </content>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+      var getRandomQuote = function(){
+        $.ajax('/get_random_quote/', {
+          'type': 'get',
+          'success': function(response){
+            console.log(response)
+            $('#quote').text('"' + response.quote + '"');
+          }
+        });
+      };
+
+      $('#generate').click(getRandomQuote);
+
+      $(document).on('keyup', function(e){
+        getRandomQuote();
+      });
+
+      $(document).ready(function(){
+        getRandomQuote();
+      });
+    </script>
   </body>
-  <script type="text/javascript"></script>
 </html>
