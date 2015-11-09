@@ -37,7 +37,10 @@
         });
       };
 
-      $('#generate').click(getRandomQuote);
+      $('#generate').click(function(e){
+        e.stopPropagation();
+        getRandomQuote();
+      });
 
       $(document).on('keyup', function(e){
         e.stopPropagation();
