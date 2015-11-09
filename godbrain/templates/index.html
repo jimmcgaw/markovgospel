@@ -19,7 +19,7 @@
     <content>
 
 
-      <p class="jumbotron" id="quote" style="font-family: 'Shadows Into Light Two', cursive; border-radius: 5px;">{{ crap_quote }}</p>
+      <p class="jumbotron" id="quote" style="font-family: 'Shadows Into Light Two', cursive; border-radius: 5px;"></p>
 
       <button id="generate" class="btn btn-large btn-primary" style="float:right;">Generate</button>
       <span style="float:right;clear:both" class='help-text'>(or press any key)</span>
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript">
       var getRandomQuote = function(){
-        $.ajax('/get_random_quote/', {
+        $.ajax('{{ url }}', {
           'type': 'get',
           'success': function(response){
             console.log(response);

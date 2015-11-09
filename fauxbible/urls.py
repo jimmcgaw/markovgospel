@@ -19,6 +19,8 @@ from godbrain import views
 
 urlpatterns = [
     url(r'^get_random_quote/$', views.get_random_quote, name='get_random_quote'),
+    url(r'^get_dirty_quote/$', views.get_dirty_quote, name='get_dirty_quote'),
+    url(r'^dirty/', views.lets_get_dirty, name='lets_get_dirty'),
     url(r'^', views.lets_get_holy, name='lets_get_holy'),
     # url(r'^admin/', include(admin.site.urls)),
 ]
