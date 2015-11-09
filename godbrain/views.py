@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.conf import settings
 
 import random
-import nltk
+# import nltk
 import os
 
 bibleText = """
@@ -60,6 +60,8 @@ class Markov(object):
 
 def lets_get_holy(request):
   markov = Markov(bibleText)
-  crap_quote = markov.generate_markov_text(size=200)
-  crap_quote = nltk.tokenize.sent_tokenize(crap_quote)[1]
+  crap_text = markov.generate_markov_text(size=200)
+  sentences = crap_text.split('. ')
+  crap_quote = sentences[1]
+  # crap_quote = nltk.tokenize.sent_tokenize(crap_quote)[1]
   return render(request, "index.html", locals())
