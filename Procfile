@@ -1,0 +1,1 @@
+web: gunicorn fauxbible.wsgi --log-file -
